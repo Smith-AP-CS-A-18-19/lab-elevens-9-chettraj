@@ -53,6 +53,12 @@ public class ElevensBoard extends Board {
 	 */
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
+		if ((selectedCards.size() == 2 && containsPairSum11(selectedCards) == true) || (selectedCards.size() == 3 && containsJQK(selectedCards) == true)){
+			return true;
+		}
+		else {
+			return false;
+		}
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 	}
 
@@ -66,6 +72,12 @@ public class ElevensBoard extends Board {
 	 */
 	@Override
 	public boolean anotherPlayIsPossible() {
+		if (containsPairSum11(cardIndexes()) == true || containsJQK(cardIndexes()) == true){
+			return true;
+		}
+		else {
+			return false;
+		}
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 	}
 
@@ -78,6 +90,14 @@ public class ElevensBoard extends Board {
 	 *              contain an 11-pair; false otherwise.
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
+		for (int i = 0; i < selectedCards.size(); i++){
+			for (int j = 0; j < selectedCards.size(); j++){
+				if (cardAt(i).pointValue() + cardAt(j).pointValue() == 11){
+					return true;
+				}
+			}
+		}
+		return false;
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
 	}
 
@@ -90,6 +110,32 @@ public class ElevensBoard extends Board {
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		boolean found = false;
+		for (int j = 0; j < selectedCards.size(); j++){
+			int i = selectedCards.get(j);
+			if (cardAt(i).rank().equals("Jack")){
+				found = true;
+			}
+		}
+		if (found == false){
+			return false;
+		}
+		for (int q = 0; q < selectedCards.size(); q++){
+			int p = selectedCards.get(q);
+			if (cardAt(p).rank().equals("Queen")){
+				found = true;
+		}
 	}
+		if (found == false){
+			return false;
+		}
+		for (int q = 0; q < selectedCards.size(); q++){
+			int p = selectedCards.get(q);
+			if (cardAt(p).rank().equals("King")){
+				found = true;
+			}
+		}
+		return found;
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+}
 }

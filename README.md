@@ -5,11 +5,11 @@ Follow the instructions provided for Activity 9 in the student lab guide. Comple
 ## Questions
 1. The size of the board is one of the differences between *Elevens* and *Thirteens*. Why is size not an abstract method?
 
-    * Answer
+    * Answer - it is an instance variable therefore it is already defined in the subclass
 
 2. Why are there no abstract methods dealing with the selection of the cards to be removed or replaced in the array `cards`?
 
-    * Answer
+    * Answer - it is used in all card games therefore it can be implemented in the board class
 
 3. Another way to create “IS-A” relationships is by implementing interfaces. Suppose that instead of creating an `abstract Board` class, we created the following `Board` interface, and had `ElevensBoard` implement it. Would this new scheme allow the Elevens GUI to call `isLegal` and `anotherPlayIsPossible` polymorphically? Would this alternate design work as well as the `abstract Board` class design? Why or why not?
 	```java
@@ -19,4 +19,4 @@ Follow the instructions provided for Activity 9 in the student lab guide. Comple
 	}
 	```
 
-    * Answer
+    * Answer - yes it would work but the methods would have to be implemented individually for each board game
